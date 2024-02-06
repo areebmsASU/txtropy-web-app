@@ -1,0 +1,39 @@
+.container {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ }
+
+
+.appBar {
+  position: 'relative';
+ }
+
+
+.toolbarTitle {
+    flex: 1;
+}
+
+.layout {
+      width: auto;
+      margin-left: 24px;
+      margin-right: 24px;
+  }
+
+.cardHeader {
+    background-color: grey;
+  }
+
+.cardPricing {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 16px,
+  }
+
+.heroContent {
+    justify-content: center;
+}
