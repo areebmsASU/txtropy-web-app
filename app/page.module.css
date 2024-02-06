@@ -5,5 +5,35 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #E0C786;
  }
+
+
+.appBar {
+  position: 'relative';
+ }
+
+
+.toolbarTitle {
+    flex: 1;
+}
+
+.layout {
+      width: auto;
+      margin-left: 24px;
+      margin-right: 24px;
+  }
+
+.cardHeader {
+    background-color: grey,
+  }
+
+.cardPricing {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 16px,
+  }
+
+.heroContent {
+    justify-content: center;
+}
