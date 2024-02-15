@@ -3,7 +3,7 @@
 import {useState} from 'react';
 
 import Typography from '@mui/material/Typography';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import SwipeableDrawer from '@mui/material/Drawer';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -12,6 +12,7 @@ import { Global } from '@emotion/react';
 
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import Box from '@mui/system/Box';
 
 
 
@@ -52,6 +53,7 @@ export default function Drawer({ params }) {
           },
         }}
       />
+      
     <TabContext value={value} >
 
     <SwipeableDrawer

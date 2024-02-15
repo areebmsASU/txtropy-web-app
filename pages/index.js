@@ -15,15 +15,17 @@ import styles from '@/styles/page.module.css';
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch('https://5069kci2yd.execute-api.ca-central-1.amazonaws.com/prod/books')
-  const books = await res.json()
+  const res = await fetch('https://api.txtropy.com/books')
+  const jres = await res.json()
+  const books = await JSON.parse(jres.body)
+  // console.log(books);
   // Pass data to the page via props
   return { props: { books } }
 }
 
 
 export default function Page({ books }) {
-
+  console.log(books);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -42,24 +44,13 @@ export default function Page({ books }) {
 
         <Grid container spacing={4}>
           {books.map(tier => (
-            <Grid item key={tier.title} xs={12} sm={6} md={4}>
+            <Grid item key={tier.id} xs={12} sm={6} md={4}>
               <Card>
-                <CardHeader
-                  title={tier.title}
-                  // subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  // subheaderTypographyProps={{ align: 'center' }}
-                  className={styles.cardHeader}
-                />
                 <CardContent>
+                  <Typography><Box component="span" fontWeight='fontWeightBold'>{tier.title}</Box></Typography>
                   {tier.authors.map(author => (
-                    <Typography variant="h5" align="center" key={author} component="p">
+                    <Typography key={`${tier.id}-${author}`} component="p">
                       {author}
-                    </Typography>
-                  ))}
-                  {tier.subjects.map(subject => (
-                    <Typography variant="p" align="center" key={subject} component="p">
-                      {subject}
                     </Typography>
                   ))}
                 </CardContent>
