@@ -36,7 +36,7 @@ function TextWindow({ lines, setLines }) {
 
   return (
         <Box sx={{ width: 800, textAlign : "center" }} py={1}>
-          {lines.map(line => (
+          {lines?.map(line => (
             <Typography key={line.id}>{line.text}</Typography>
           ))}
         </Box>
