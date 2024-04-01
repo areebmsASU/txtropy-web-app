@@ -35,16 +35,16 @@ const drawerBleeding = 56;
 export default function Drawer({ chunkIds }) {
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("1");
+  const [selectedTab, setSelectedTab] = useState("1");
 
   const [relations, setRelations] = useState([]);
  
   useEffect(() => {
-      fetch(`https://api.txtropy.com/relations?positive=1&chunks=${chunkIds.join()}`).then(res => res.json()).then(newRelations=>{
-        setRelations(newRelations);
-        newRelations[0] && setValue(newRelations[0].id)
-      });
-    
+    chunkIds.length && fetch(`https://api.txtropy.com/relations/shared_vocab_ratio?chunks=${chunkIds.join()}&limit=100`).then(res => res.json()).then(newRelations=>{
+    setRelations([...new Map(newRelations.map(item =>
+      [item.chunk, item])).values()]);
+    newRelations.length && setSelectedTab(newRelations[0].chunk);
+    });    
   }, [chunkIds])
 
 
@@ -62,7 +62,7 @@ export default function Drawer({ chunkIds }) {
           },
         }}/>
       
-    <TabContext value={value} >
+    <TabContext value={selectedTab} >
       <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -92,13 +92,12 @@ export default function Drawer({ chunkIds }) {
           onClick={toggleDrawer(true)}>
           <Puller />
           <Typography sx={{ p: 2, color: 'text.secondary' }}>
-            <TabList onChange={(e,v) => {setValue(v)}}>
-              {relations.map(relation => <Tab label={relation.text} value={relation.related_id} />) }
-              
+            <TabList onChange={(e,v) => {setSelectedTab(v)}}>
+              {relations.map(relation => <Tab label={relation.value} value={relation.chunk} />) }
             </TabList>
           </Typography>
         </StyledBox>
-            {relations.map(relation => <TabPanel value={relation.related_id}>{relation.text}</TabPanel>) }
+            {relations.map(relation => <TabPanel value={relation.chunk}>{`${relation.chunk} ${relation.related.text} ${ JSON.stringify(relation.shared, null, 2) } ${ JSON.stringify(relation.entr, null, 2) }`}</TabPanel>) }
       </SwipeableDrawer>
     </TabContext>
     </>

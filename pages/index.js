@@ -58,11 +58,9 @@ export default function Page({ books }) {
                         {tier.title}
                       </Box>
                     </Typography>
-                    {tier.authors.map((author) => (
-                      <Typography key={`${tier.id}-${author}`} component="i">
-                        {author}
+                      <Typography component="i">
+                        {tier.author}
                       </Typography>
-                    ))}
                   </CardContent>
                 </CardActionArea>
               </Card>
