@@ -22,7 +22,7 @@ export default function Page({ books }) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <main className={styles.layout}>
+      <div className={styles.layout}>
         <Box sx={{ paddingTop: 8 }}>
           <Typography
             component="h1"
@@ -38,12 +38,9 @@ export default function Page({ books }) {
             color="textSecondary"
             component="p"
           >
-            Textropy is a portmanteau of the words <i>Text</i> and{" "}
-            <i>Entropy</i>.{" "}
-            <a href="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence">
-              Jensen-Shannon distance
-            </a>{" "}
-            has been used to find relations between the following books:
+            A portmanteau of the words <i>Text</i> and <i>Entropy</i>.{" "}
+            Information Theory has been used to find relations between the
+            following books:
           </Typography>
         </Box>
 
@@ -58,16 +55,14 @@ export default function Page({ books }) {
                         {tier.title}
                       </Box>
                     </Typography>
-                      <Typography component="i">
-                        {tier.author}
-                      </Typography>
+                    <Typography component="i">{tier.author}</Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
             </Grid>
           ))}
         </Grid>
-      </main>
+      </div>
     </React.Fragment>
   );
 }

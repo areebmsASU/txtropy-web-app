@@ -19,8 +19,9 @@
 
 .layout {
       width: auto;
-      margin-left: 24px;
-      margin-right: 24px;
+      margin-left: 10%;
+      margin-right: 10%;
+      background-color: #E0C786;
   }
 
 .cardHeader {
