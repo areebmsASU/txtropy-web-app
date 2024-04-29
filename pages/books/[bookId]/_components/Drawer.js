@@ -37,11 +37,12 @@ export default function Drawer({ chunkIds }) {
     const timeout =
       chunkIds.length > 0 &&
       setTimeout(() => {
-        fetch(`https://api.txtropy.com/relations?chunks=${chunkIds.join()}`)
+        fetch(`https://api.txtropy.com/relations?chunks=${chunkIds}`)
           .then((res) => res.json())
           .then((newRelations) => {
             setRelations(newRelations);
             newRelations.length && setSelectedTab(newRelations[0].id);
+            toggleDrawer(false);
           });
       }, 1000);
     !chunkIds.length && setRelations([]);
@@ -100,7 +101,7 @@ export default function Drawer({ chunkIds }) {
                 {relations.map((relation) => (
                   <Tab
                     key={relation.id}
-                    value={relation.id}
+                    value={`${relation.id}`}
                     label={`${relation.entropy.jensen_shannon} ${relation.book.author}`}
                   />
                 ))}

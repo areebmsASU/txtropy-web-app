@@ -39,29 +39,30 @@ export default function Page({ books }) {
             component="p"
           >
             A portmanteau of the words <i>Text</i> and <i>Entropy</i>.{" "}
-            Information Theory has been used to find relations between the
-            following books:
+            Information Theory has been used to find similar passages between
+            the following books:
           </Typography>
         </Box>
-
-        <Grid container spacing={4}>
-          {books.map((tier) => (
-            <Grid item key={tier.id} xs={12} sm={6} md={4}>
-              <Card>
-                <CardActionArea href={`/books/${tier.id}`}>
-                  <CardContent>
-                    <Typography>
-                      <Box component="span" fontWeight="fontWeightBold">
-                        {tier.title}
-                      </Box>
-                    </Typography>
-                    <Typography component="i">{tier.author}</Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <div className={styles.grid}>
+          <Grid container spacing={4}>
+            {books.map((tier) => (
+              <Grid item key={tier.id} xs={12} sm={6} md={4}>
+                <Card>
+                  <CardActionArea href={`/books/${tier.id}`}>
+                    <CardContent>
+                      <Typography>
+                        <Box component="span" fontWeight="fontWeightBold">
+                          {tier.title}
+                        </Box>
+                      </Typography>
+                      <Typography component="i">{tier.author}</Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     </React.Fragment>
   );

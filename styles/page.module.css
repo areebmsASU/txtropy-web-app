@@ -19,10 +19,14 @@
 
 .layout {
       width: auto;
-      margin-left: 10%;
-      margin-right: 10%;
+
       background-color: #E0C786;
   }
+
+.grid {
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
 .cardHeader {
     background-color: grey;
