@@ -129,15 +129,15 @@ export default function Drawer({ chunkIds }) {
                 <hr style={{ margin: "1rem" }} />
                 <div style={{ textAlign: "center" }}>
                   <span style={{ width: "30%", display: "inline-block" }}>
-                    <b>Standardized Distance: </b>
+                    <b>Jensen Shannon: </b>
                     {relation.entropy.jensen_shannon}
                   </span>
                   <span style={{ width: "30%", display: "inline-block" }}>
-                    <b> New Information: </b>
+                    <b> Entropy Gained: </b>
                     {relation.entropy.gained}
                   </span>
                   <span style={{ width: "30%", display: "inline-block" }}>
-                    <b> Missing Information: </b>
+                    <b> Entropy lost: </b>
                     {relation.entropy.lost}
                   </span>
                 </div>
@@ -146,8 +146,11 @@ export default function Drawer({ chunkIds }) {
                     <b>Matching Stems:</b>
                   </span>
                   {relation.shared_vocab.map((v) => (
-                    <span key={v.stem} style={{ display: "inline-block" }}>
-                      {v.stem}: {v.count}{" "}
+                    <span
+                      key={v.stem}
+                      style={{ display: "inline-block", padding: "4px" }}
+                    >
+                      {`${v.stem}: ${v.count}`}
                     </span>
                   ))}
                 </p>
